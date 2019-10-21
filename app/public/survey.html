@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Finder || Survey</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-dark jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Friend Finder Survey</h1>
+            <hr>
+            <div class="card">
+                <h2 class="card-header">About You <ion-icon name="person"></ion-icon>
+                </h2>
+                <div class="card-body">
+                    <form>
+                        <h5><label for="name"> Please Enter Your Name <small id="namehelp"
+                                    class="text-muted">(required)</small></label></h5>
+                        <div class="row">
+                            <div class="col">
+                                <input id="name" type="text" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <br>
+                        <h5><label for="id"> Provide A Link To A Photo ID <small id="namehelp"
+                                    class="text-muted">(required)</small></label></h5>
+                        <input id="ID" type="text" class="form-control" placeholder="link">
+
+                        <hr>
+                        <div class="container">
+
+                            <h5>1. Keeping up with politics and current events is important to you.</h5>
+                            <br>
+
+                            <div class="input-group col-3">
+                                <select class="custom-select" id="choice1"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>2.You'd rather have a small, tight knit group of fridnds than be<br> widely recognized.
+                            </h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice2"
+                                    aria-label="Example select with button addon">
+
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>3. When getting together, you find that having people over/ going<br> to someones house
+                                is preferable to hanging out at a bar.</h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice3"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>4. If your friend is upset, your first instinct is to fix the problem<br> rather than
+                                offer emotional support. </h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice4"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>5. You are calm under pressure and rarely get upset by stressful events.</h5>
+                            <br>
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice5"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>6. You tend to lose interest in a conversation if it turns philisophical.</h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice6"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>7. You rarely reflect on past situations and wonder<br> what you could have done
+                                differently. </h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice7"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>8. You feel comfortable walking up to someone you find <br>interesting and striking up a
+                                conversation.</h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice8"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>9. You find it easy to empathize with a person who has <br>gone through something you
+                                never have.</h5>
+                            <br>
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice9"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                            <br>
+                            <h5>10. When it comes to making life-changing choices, you mostly <br>listen to your heart
+                                rather than your head.</h5>
+                            <br>
+
+
+                            <div class="input-group col-md-3">
+                                <select class="custom-select" id="choice10"
+                                    aria-label="Example select with button addon">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Strongly Disagree</option>
+                                    <option value="2">Somewhat Disagree</option>
+                                    <option value="3">Neutral </option>
+                                    <option value="4">Somewhat Agree</option>
+                                    <option value="5">Strongly Agree</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
+                        <button id='submit' type="submit" class="btn btn-lg btn-dark">Submit</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <br>
+            <a href="/"><button class="btn btn-outline-dark">
+                    <ion-icon name="home"></ion-icon>
+                </button></a> | <a href="/api/friends"><button class="btn  btn-outline-dark">API Friend
+                    Data</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+
+        var newFriend = {
+            name: $("#name").val().trim(),
+            photo: $("#ID").val().trim(),
+            score: [
+                ($("#choice1 :selected").val()),
+                ($("#choice2 :selected").val()),
+                ($("#choice3 :selected").val()),
+                ($("#choice4 :selected").val()),
+                ($("#choice5 :selected").val()),
+                ($("#choice6 :selected").val()),
+                ($("#choice7 :selected").val()),
+                ($("#choice8 :selected").val()),
+                ($("#choice9 :selected").val()),
+                ($("#choice10 :selected").val())
+            ]
+        };
+
+        $.post("/api/friends", newFriend, function (data) {
+            console.log(data)
+           
+
+
+
+        })
+    })
+
+</script>
