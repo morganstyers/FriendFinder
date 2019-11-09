@@ -1,20 +1,24 @@
-
-const ex = require("express");
-const bp = require("body-parser");
-const p  = require("path");
-
-const app = ex();
-const PORT = process.env.PORT || 3000;
-
-app.use(bp.urlencoded({ extended: true}));
-app.use(bp.json());
+var express = require("express");
+var path = require("path");
+var app = express();
 
 
-app.use(ex.static(p.join(__dirname, "/app/public")));
+// Sets up the Express App
+// =============================================================
 
-require("./app/routing/apiRoutes.js")(app);
-require("./app/routing/htmlRoutes.js")(app);
+var PORT = process.env.PORT || 3000;
 
-app.listen(PORT, function() {
-    console.log("FriendFinder listening on http://localhost:" + PORT)
+// Sets up the Express app to handle data parsing
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
+
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function () {
+  console.log("App listening on PORT:" + PORT);
 });
