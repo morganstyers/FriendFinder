@@ -13,6 +13,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+    
 </head>
 
 <body>
@@ -33,9 +34,9 @@
                             </div>
                         </div>
                         <br>
-                        <h5><label for="id"> Provide A Link To A Photo ID <small id="namehelp"
+                        <h5><label for="IDP"> Provide A Link To A Photo ID <small id="namehelp"
                                     class="text-muted">(required)</small></label></h5>
-                        <input id="ID" type="text" class="form-control" placeholder="link">
+                        <input id="IDP" type="text" class="form-control" placeholder="link">
 
                         <hr>
                         <div class="container">
@@ -223,59 +224,94 @@
                     Data</button></a>
         </div>
     </div>
-    <div class="modal" id="myModal"tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+    <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                    <h3 class="modal-title" id="exampleModalLabel">Best Match</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                  <p>Modal body text goes here.</p>
+                    <h2 id="matchName"></h2>
+                    <img id="matchImg" style="width:350px;height:400px;"
+                    src="https://via.placeholder.com/400x400"
+                        alt="Placehodler image in case match image doesn't show" />
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
 <script type="text/javascript">
-    $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
+   $(document).ready(function () {
     $("#submit").on("click", function (event) {
-        $('#myModal').modal('show')
         event.preventDefault();
 
+        function validateForm() {
+          var isValid = true;
+          $('.form-control').each(function () {
+            if ($(this).val() === '') {
+              isValid = false;
+            }
+          });
+          $('.custom-select').each(function () {
+            if ($(this).val() === "") {
+              isValid = false;
+            }
+          });
+          return isValid;
+        }
+        if (validateForm() == true) {
+
         var newFriend = {
-            name: $("#name").val().trim(),
-            photo: $("#ID").val().trim(),
-            score: [
-                ($("#choice1 :selected").val()),
-                ($("#choice2 :selected").val()),
-                ($("#choice3 :selected").val()),
-                ($("#choice4 :selected").val()),
-                ($("#choice5 :selected").val()),
-                ($("#choice6 :selected").val()),
-                ($("#choice7 :selected").val()),
-                ($("#choice8 :selected").val()),
-                ($("#choice9 :selected").val()),
-                ($("#choice10 :selected").val())
-            ]
-        };
+            name: $("#name").val(),
+            photo: $("#IDP").val(),
+            scores: [
+                $("#choice1").val(),
+                $("#choice2").val(),
+                $("#choice3").val(),
+                $("#choice4").val(),
+                $("#choice5").val(),
+                $("#choice6").val(),
+                $("#choice7").val(),
+                $("#choice8").val(),
+                $("#choice9").val(),
+                $("#choice10").val()
+            ]};
+             console.log(newFriend);
+             var currentURL = window.location.origin;
+          $.post(currentURL + "/api/friends", newFriend, function (data) {
+          
+    
+                
+                //Posts the result to show the best match 
+                $("#matchName").text(data.name);
+                $("#matchImg").attr("src", data.photo);
+                // Show moda
+                alert("You added " + newFriend.name);
+            })
 
-
-        $.post("/api/friends", newFriend, function (data) {
-            console.log(data)
-
-        })
-       
-    })
-
+          $('.modal').modal();
+          $('#name').val("");
+          $('#photo').val("");
+          $('#one').val("");
+          $('#two').val("");
+          $('#three').val("");
+          $('#four').val("");
+          $('#five').val("");
+     
+    
+    } else {
+          alert("Please fill out all fields")
+        }
+        
+    });
+});
 </script>

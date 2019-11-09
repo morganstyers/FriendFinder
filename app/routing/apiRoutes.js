@@ -1,21 +1,42 @@
-// ===============================================================================
-// LOAD DATA
-// We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on table-data, waitinglist, etc.
-// ===============================================================================
 
-var friendData= require("../data/friends")
-
-// ===============================================================================
-// ROUTING
-// ===============================================================================
+var friends= require("../data/friends")
 
 module.exports = function(app){
   app.get("/api/friends", function(req,res){
-    res.json(friendData)
+    res.json(friends)
   })
   app.post("/api/friends", function(req,res){
-    friendData.push(req.body)
+    res.json(friends)
   })
+
+    app.post('/api/friends', function(req,res){
+    
+      var friendScore = req.body.scores;
+      var friendArray = [];
+      var friendMatch = 0;
   
-}
+      for(var i=0; i<friends.length; i++){
+        var scoresDiff = 0;
+        
+        for(var j= 0; j< friendScore.length; j++){
+          scoresDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(friendScore[j])));
+        }
+  
+      
+        friendArray.push(scoresDiff);
+      }
+  
+      for(var i=0; i<friendArray.length; i++){
+        if(friendArray[i] <= friendArray[friendMatch]){
+          friendMatch = i;
+        }
+      }
+
+      var match = friendData[friendMatch];
+      res.json(match);
+  
+      console.log(req.body);
+      friends.push(req.body);
+    });
+  
+  };
